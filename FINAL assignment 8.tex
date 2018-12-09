@@ -1,0 +1,240 @@
+% Comments start with % (percent) character and last till the end of the line.
+%
+% The line below tells TeXworks editor to use pdflatex for compilation
+% of this document; remove it if you want to use another engine 
+%
+%!TEX program = pdflatex
+%
+% LaTeX2e document starts with \documentclass[options]{<class-name>}
+% <class-name> can be one of the standard LaTeX document classes: 
+% article, report or book, or some other specialised class.
+%
+\documentclass[twocolumn]{article}
+%
+% Preamble of LaTeX document is everything before \begin{document}.
+% Preamble is used to load extension packages and to set up global 
+% parameters and configuration for the entire document.
+%
+% Extension packages providing additional functionality
+\usepackage{amsmath}       % additional math environments
+\usepackage{graphicx}      % graphics import from external files 
+\usepackage{epstopdf}      % automates .eps to .pdf conversion 
+% epstopdf package may require --shell-escape option to pdflatex
+\usepackage{booktabs}      % table typesetting additions
+\usepackage{siunitx}       % number and units formatting
+\usepackage{caption}       % customisation of captions
+\usepackage{url}           % format url addresses
+\usepackage{abstract}		% allows formatting of abstract
+\usepackage{float}
+%\usepackage{tikz,pgfplots} % diagrams and data plots
+%
+\usepackage{makecell}
+% set up caption options
+\captionsetup{margin=12pt,font=small,labelfont=bf}
+%
+%removes abstract title
+\renewcommand{\abstractname}{}
+%sets abstract margins
+\setlength{\absleftindent}{30mm}
+\setlength{\absrightindent}{30mm}
+%
+% global options for siunitx
+%\sisetup{seperr,repeatunits=false,per=symbol}
+%
+% some handy commands for referencing;
+% the optional argument overrides the default label, e.g.
+% \figref[FIG.~]{fig:label}
+\newcommand{\figref}[2][\figurename~]{#1\ref{#2}}
+\newcommand{\tabref}[2][\tablename~]{#1\ref{#2}}
+\newcommand{\secref}[2][Section~]{#1\ref{#2}}
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+
+% The document content starts with \begin{document} 
+% and is finished with \end{document}
+%
+\graphicspath{ {Session 8/} }
+
+\begin{document}
+\title{ESS05. Magnetic Torque} % fill in the title here
+\author{Joe Simple}% fill in your name here
+\date{1.10.2010} % date of the report
+\twocolumn[	% makes title and abstract appear over entire page width
+\maketitle % formats the title
+\begin{onecolabstract}
+\noindent
+This experiment explores the magnetic torque phenomenon on an example of two coils with DC current. The mechanical force arising from the interaction of the magnetic moments in the coils was measured and compared with an analytical prediction. The experimental results were found in good relation with the theory.
+\end{onecolabstract}
+\vspace{5 mm} % takes one free line before rest of text
+]
+
+
+\section{Introduction}
+\label{sec:introduction}
+
+According to the principles of electromagnetic induction any moving charges, such as an electric current, can generate a magnetic induction. The magnetic induction is often a useful source of magnetic force capable of producing mechanical or other type of work. Although in practice we are not particularly interested in the exact relation between the work and the original current, the ability of measuring one can always give the knowledge about the other. 
+
+\vspace{2 mm}
+\noindent
+In this experiment we will use this principle in order to obtain measurements of a DC current by knowing the relation between mechanical forces and the electromotive forces and by using measurements of the balance.
+
+\section{Theory}
+\label{sec:theory}
+
+Basing on the Biot-Savart law [1] and its applications [2] magnetic induction in the centre of a plane coil with \textit{$n_1$} loops of wire of radius \textit{$a_1$} and current \textit{$I_1$}:
+\begin{equation}
+B = \frac{\mu_0 n_1 I_1}{2a_1}
+\end{equation}
+where \textit{n} is the number of turns in the coil and \textit{$\mu_0 = 4\pi \times 10^{-7}N / A^2$}. If another (smaller) coil is placed in the centre of the large coil and a current $I_2$ is driven through it too, a magnetic torque \textit{$T_m$} is experienced by the moment \textit{$T_m$} is experienced by the moment m of the smaller coil:
+\begin{equation}
+T_m = \left|\mathbf{T_m}\right| = \left|\mathbf{m \times B}\right| \sim \frac{\mu_0 n_1 I_1}{2a_1}A_2n_2I_2
+\end{equation}
+where $A_2$, $n_2$ and $I_2$ are the area, number of turns and the current in the smaller coil. The magnetic torque $T_m$ can be balanced by the gravitational torque $T_g$ g if the small coil is attached to a balancing arm of the scalepans (as shown on figure 1):
+\begin{equation}
+T_g = mgl = \frac{\mu_0 n_1 I_1}{2a_1}A_2n_2I_2 = T_m
+\end{equation}
+For any chosen value of current I (which can be taken the same in both coils, if we connect the
+coils in serious) there is always a certain value of mass m which would lead to the balance of
+the two torques. The same would apply if we reverse the statement:
+\begin{equation}
+I = \sqrt{\frac{mgl2a_1}{\mu_0n_1n_2A_2}}
+\end{equation}
+Using equation (4) we can determine the unknown current values through the balance
+measurements of well determined weights. The minimal value of error in the weights would
+warranty a good precision in measurements of the current.
+
+\section{Experimental}
+\subsection{Instrumentation}
+\begin{enumerate} 
+\setlength{\itemsep}{1pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\item Coil 1 (large) with radius a1
+\item Coil 2 (small) with radius a2 
+\item A set of weights
+\item DC power supply
+\item Ampermeter
+\item Balance arm with scalepans attached to the small coil.
+\end{enumerate}
+\subsection{Diagram and measured components}
+\begin{figure}[H]
+\centering
+\includegraphics[width=50mm,scale=0.5]{figure1.jpg}
+\caption{Fig. 1. Schematic representation of the coils and the balance arms. Coils 1 and 2 connected in series, so both have the same current I, measured by ampermeter A. Current in coil 1 induces magnetic field B at the centre of the smaller coil. M is the magnetisation vector induced by the same current in coil 1. m is the mass of the weights put in one
+of the balance arms}
+ \label{fig:figure1}
+\end{figure}
+Measured (given) dimensions and uncertainties:
+\begin{itemize}
+\setlength{\itemsep}{1pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\item[--] Radius of the large coil: $a_1$=0.215 +/-0.001m
+\item[--] Radius of the large coil: $a_1$=0.215 +/-0.001m
+\item[--] Internal radius of the small coil $R_{in}$=0.023 +/-0.001m
+\item[--] External radius of the small coil $R_{ex}$=0.028 +/-0.001m
+\item[--] Average area of the small coil $A_2=4\pi({R^2}_{in}+{R^2}_{ex})/2=0.0004m^2$
+\item[--] Number of turns in the large coil: $n_1$=462
+\item[--] Number of turns in the small coil: $n_2$=202
+\item[--] Length of the balancing arm: l=0.385 +/-0.001m
+\end{itemize}
+
+\section{Plan of measurements}
+\begin{enumerate} 
+\setlength{\itemsep}{1pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\item Balance the scale at $I=0$
+\item Determine the maximum weight for $I=5$ Amp 
+\item Use different weights to obtain a range of balancing currents
+\item For every chosen weight find and record the current which leads to the balance of
+scales.
+\item Calculate the current which should lead to the balance of scales according to equation 4.
+\item Plot the current measured versus the current calculated
+\item Calculate the gradient and the error associated with (by means of fitting)
+\item Calculate the error of the currents for individual masses used.
+\end{enumerate}
+
+\section{Safety procedures}
+\begin{itemize}
+\setlength{\itemsep}{1pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\item[--] Check the electrical connections to mains.
+\item[--] Verify the PAT testing expiry date
+\end{itemize}
+
+\section{Results}
+The measured and calculated values of the current are given in table 1. Calculated values were
+obtained by using equation 4. Figure 1 shows the relation between the measured and calculated
+current. The error in the measured current was obtained by noting the variation in the
+ampermeter at the maximum deviation of the scale pan needle from the balance point. The
+calculated error was propagated from the initial uncertainties of geometrical dimensions and
+nominations. It was assumed that the weights have negligible error. 
+\begin{table}[H]
+\centering
+\caption{Current vs load. Calculated values produced by equation (4).}
+\label{tab:table}
+\begin{tabular}{c c c}
+\hline
+\makecell{Weight \\(kg) \\ x$10^{-3}$} & \makecell{Calculated Current \\ (Amp) \\ Error +/- 1.7\%} & \makecell{Measured Current \\ (Amp) \\ Error +/- 0.05 \\ Amp} \\
+\hline
+0.2 & 1.66 & 1.90\\
+0.4 & 2.34 & 2.70\\
+0.6 & 2.87 & 3.31\\
+0.8 & 3.31 & 3.84\\
+1.0 & 3.71 & 4.30\\
+1.2 & 4.06 & 4.70\\
+\hline
+\end{tabular}
+\end{table}
+\begin{figure}[H]
+\centering
+\includegraphics[width=80mm,scale=0.5]{figure2.jpg}
+\caption{Calculated current versus measured current (red dots). Blue line is a fit
+using least-squares routine “polyfit” in Matlab}
+ \label{fig:figure2}
+\end{figure}
+\noindent
+Using ‘polyfit’ fitting routing in Matlab a gradient and a standard deviation have been derived. The gradient of the line p=0.256 +/- 0.002. \\
+\\
+The standard deviation value has been found from the value:
+\begin{equation}
+normr=0.120=\sqrt{\Sigma(y_i - \bar{y})^2}
+\end{equation}
+From this value we can derive the standard deviation:
+\begin{equation}
+\sigma(y) = normr/\sqrt{N-1} = 0.054
+\end{equation}
+where N is the number of points. The error in the mean will give the value of the error in the gradient:
+\begin{equation}
+\sigma(\bar{y}) = \sigma(y)/\sqrt{N} = 0.054/6 = 0.022
+\end{equation}
+The relative error of current obtained from the measurements:
+\begin{equation}
+\Delta I/I = 0.017
+\end{equation}
+
+\section{Discussion}
+\noindent
+The goal of the experiment was to obtain the values of the current by knowing the theoretical relation between the magnetic torque and the current. Using the balances we were able to equalise the mechanical torque with the magnetic one and thus relate the values of the electric
+current with the weights producing the mechanical torque. Given that the masses are well defined (i.e. the precision is high) and that the uncertainty in the balance is very little ($\sim$ $<$1\%), the values of the current can be calculated with a good precision. Our analysis showed that the calculated current is in very good correlation with the current measured on the ampermeter. The correlation plot shows a linear dependence with the error in the gradient (fitted with help of Matlab) of only 0.2\%. At the same time the average value of the gradient is less than 1.0 assuming that the formula contains approximations. For instance, the equation for magnetic
+moment in the form it is used here is normally valid for approximations where the size of the coils is much smaller than the other dimensions involved. In our case the magnetic field from the large coil is changing significantly over the distance of the small coil, and thus the approximation in equation 2 would be only partial. The calculated error of the current was
+found 1.7\%. This value is nearly 10 times bigger that the value obtained through the fit. The reasons for deviations are because, firstly: the errors in the length of the balance arm, dimensions of the coils are overestimated and besides systematic rather than random. The main error in this case is coming from the measurement of the balance (which is given in the uncertainty of the current recorded). This error is the error related to the fit, however it is not correctly accounted because the fit takes the square-least values on the vertical axis. It is also important to note that the square-least fit calculates the error in the mean, whereas individual
+errors are always larger (by factor of $\sqrt{N}$.)
+
+\section{Discussion}
+\noindent
+Measurements of DC current using mechanical balances have been carried out. Using plotting software MATLAB a correlation function between the measured and calculated current has been plotted and fitted. The results of the fit, the gradient and its standard deviation has been
+found and analysed. The calculated error in the theoretical values of the current were compared 
+with the errors produced by the least-square fit. The gradient of the fit and its error were discussed in the context of the prediction. It was suggested that the approximation of the equation 2, although giving a right correlation in the dependence, is limited in precision to give the correct results of the real current. 
+
+\begin{thebibliography}{9}
+\bibitem{Book01} B.I. Bleaney, \emph{Electricity and Magnetism}, (John Wiley and Sons, New York, 2001), p. 19.
+\bibitem{Web01}
+ \url{http://hyperphysics.phy-astr.gsu.edu/hbase/HFrame.html}, (accessed  8 December 2009).
+\end{thebibliography}
+
+\end{document}
